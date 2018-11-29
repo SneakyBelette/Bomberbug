@@ -186,6 +186,8 @@ public class ListeProjectiles {
                 
             }
 
+            
+            requete.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

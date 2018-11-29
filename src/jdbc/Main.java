@@ -345,69 +345,31 @@ public class Main extends javax.swing.JFrame {
         
         if(evt.getKeyCode() == evt.VK_RIGHT && System.currentTimeMillis() - Moi.getDerniereAttaque() > 500){
             Moi.setDerniereAttaque(System.currentTimeMillis());
-            Projectile proj = new Projectile("couteau",0,0,0,0,0,0,Moi.getId(),0);
-            Projectiles.add(proj);
-
-            proj.Ajouter();
-            System.out.println("Coup de couteau");
-            System.out.println(System.currentTimeMillis());
-
-            System.out.println("Attaque !");
-
-
-            proj.Ajouter();
-            System.out.println("Coup de couteau");
-            System.out.println(System.currentTimeMillis());
-            System.out.println("Attaque !");
-
-        if(evt.getKeyCode() == evt.VK_RIGHT){
-
             Moi.setDirection(2);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
         }
 
+
         if(evt.getKeyCode() == evt.VK_LEFT && System.currentTimeMillis() - Moi.getDerniereAttaque() > 500){
             Moi.setDerniereAttaque(System.currentTimeMillis());
-            Projectile proj = new Projectile("couteau",0,0,0,0,0,0,Moi.getId(),0);
-            proj = proj.EstArme(proj, Moi, Moi.getArme());
-            Projectiles.add(proj);
-            System.out.println("Attaque !");
-
-        if(evt.getKeyCode() == evt.VK_LEFT){
-
             Moi.setDirection(4);
-            this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
+            this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));            
         }
-
+        
+        
         if(evt.getKeyCode() == evt.VK_UP && System.currentTimeMillis() - Moi.getDerniereAttaque() > 500){
             Moi.setDerniereAttaque(System.currentTimeMillis());
-            Projectile proj = new Projectile("couteau",0,0,0,0,0,0,Moi.getId(),0);
-            proj = proj.EstArme(proj, Moi, Moi.getArme());;
-            Projectiles.add(proj);
-            System.out.println("Attaque !");
-
-        if(evt.getKeyCode() == evt.VK_UP){
-
             Moi.setDirection(3);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
-        }    
-
+        }
+        
+        
         if(evt.getKeyCode() == evt.VK_DOWN && System.currentTimeMillis() - Moi.getDerniereAttaque() > 500){
             Moi.setDerniereAttaque(System.currentTimeMillis());
-            Projectile proj = new Projectile("couteau",0,0,0,0,0,0,Moi.getId(),0);
-            proj = proj.EstArme(proj, Moi, Moi.getArme());
-            Projectiles.add(proj);
-            System.out.println("Attaque !");
-            Moi.setDirection(4);
-
-        if(evt.getKeyCode() == evt.VK_DOWN){
             Moi.setDirection(1);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
-
         }
-
-
-        
+         
     }//GEN-LAST:event_formKeyPressed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
