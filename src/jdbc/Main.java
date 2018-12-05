@@ -343,29 +343,25 @@ public class Main extends javax.swing.JFrame {
         }
         
         
-        if(evt.getKeyCode() == evt.VK_RIGHT && System.currentTimeMillis() - Moi.getDerniereAttaque() > 500){
-            Moi.setDerniereAttaque(System.currentTimeMillis());
+        if(evt.getKeyCode() == evt.VK_RIGHT){
             Moi.setDirection(2);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
         }
 
 
-        if(evt.getKeyCode() == evt.VK_LEFT && System.currentTimeMillis() - Moi.getDerniereAttaque() > 500){
-            Moi.setDerniereAttaque(System.currentTimeMillis());
+        if(evt.getKeyCode() == evt.VK_LEFT){
             Moi.setDirection(4);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));            
         }
         
         
-        if(evt.getKeyCode() == evt.VK_UP && System.currentTimeMillis() - Moi.getDerniereAttaque() > 500){
-            Moi.setDerniereAttaque(System.currentTimeMillis());
+        if(evt.getKeyCode() == evt.VK_UP){
             Moi.setDirection(3);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
         }
         
         
-        if(evt.getKeyCode() == evt.VK_DOWN && System.currentTimeMillis() - Moi.getDerniereAttaque() > 500){
-            Moi.setDerniereAttaque(System.currentTimeMillis());
+        if(evt.getKeyCode() == evt.VK_DOWN){
             Moi.setDirection(1);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
         }
@@ -381,7 +377,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(evt.getKeyCode() == evt.VK_D){
             Moi.setDeplacerDroite(false);
-            
         }
         if(evt.getKeyCode() == evt.VK_Q){
             Moi.setDeplacerGauche(false);

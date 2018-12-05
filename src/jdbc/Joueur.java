@@ -36,7 +36,6 @@ public class Joueur {
     private int direction;
     private int etat;
     private int munition;
-    private boolean collision;
     private boolean deplacerDroite = false;
     private boolean deplacerGauche = false;
     private boolean deplacerHaut = false;
