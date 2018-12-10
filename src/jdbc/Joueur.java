@@ -42,7 +42,7 @@ public class Joueur {
     private boolean deplacerBas = false;
     private long derniereAttaque;
     private long tempsEntreAttaque;
-    
+    private boolean jeRamasse = false;
 
     /*constructeur*/
     public Joueur(int id, String pseudo, int x, int y, int pv, String Arme, int direction, int etat, int munition) {
@@ -117,6 +117,10 @@ public class Joueur {
         this.derniereAttaque = derniereAttaque;
     }
     
+    public void setJeRamasse(boolean jeRamasse){
+        this.jeRamasse = jeRamasse;
+    }
+    
     
     
     /* getters */
@@ -175,6 +179,9 @@ public class Joueur {
 
     public long getDerniereAttaque() {
         return derniereAttaque;
+    }
+    public boolean getJeRamasse(){
+        return jeRamasse;
     }
     
     
@@ -304,6 +311,16 @@ public class Joueur {
         }
         return Liste;
     }
+    
+    public void RamasserObjet(int x, int y, String pseudo){
+        this.x = x;
+        this.y = y;
+        this.pseudo = pseudo;
+        if (this.getJeRamasse()){
+            // A COMPLETER AVEC TEST DE BONUS A PROXIMITE
+        }
+    }
+    
     
     public void Push(){
         

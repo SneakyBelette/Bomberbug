@@ -365,6 +365,11 @@ public class Main extends javax.swing.JFrame {
             Moi.setDirection(1);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
         }
+        
+        if(evt.getKeyCode() == evt.VK_SPACE){
+           Moi.setJeRamasse(true);
+            
+        }
          
     }//GEN-LAST:event_formKeyPressed
 
@@ -387,6 +392,11 @@ public class Main extends javax.swing.JFrame {
         if(evt.getKeyCode() == evt.VK_S){
             Moi.setDeplacerBas(false);
         }
+        
+        if(evt.getKeyCode() == evt.VK_SPACE){
+            Moi.setJeRamasse(false);
+        }
+        
     }//GEN-LAST:event_formKeyReleased
 
     /**
