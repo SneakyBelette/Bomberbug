@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import static jdbc.Main.Moi;
 import static jdbc.Main.connexion;
 
 /**
@@ -45,6 +46,13 @@ public class ListeProjectiles {
         this.Liste.addAll(Liste);
     }
     
+    public String Afficher(){
+        String LaListe = "";
+        for(Projectile proj : Liste){
+            LaListe = LaListe + proj.toString();
+        }
+        return LaListe;
+    }
     
     
     
@@ -151,16 +159,18 @@ public class ListeProjectiles {
 
             PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur ="+ID+";");
             ResultSet resultat = requete.executeQuery();
+            boolean AExpire=false;
             while (resultat.next()) {
                 
-                Projectile Proj = null;
+                Projectile Proj = new Couteau(Moi);
+                
                         
                 if (resultat.getString("type")=="Couteau"){
                     Proj = new Couteau(resultat0.getInt("x"),resultat0.getInt("y"),resultat0.getInt("vitesse x"),resultat0.getInt("vitesse y"),resultat0.getInt("hauteur"),resultat0.getInt("largeur"),resultat0.getInt("numero_lanceur"),(int) resultat0.getLong("timer"));
                 }
                 
                 
-                boolean AExpire = Proj.Avancer();
+                AExpire = Proj.Avancer();
                 
                 if (AExpire){
                     PreparedStatement requete2 = connexion.prepareStatement("DELETE FROM projectiles WHERE timer = ? AND numero_lanceur=? ");

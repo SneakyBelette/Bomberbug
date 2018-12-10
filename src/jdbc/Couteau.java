@@ -20,7 +20,7 @@ public class Couteau extends Projectile{
         
         // /!\ cela créer un couteau FIXE pour le moment /!\
         
-        super("couteau",joueur.getX(),joueur.getY(),0,0,10,10,joueur.getId(),System.currentTimeMillis());
+        super("couteau",joueur.getX(),joueur.getY(),10,0,10,10,joueur.getId(),System.currentTimeMillis());
         
         
     }
@@ -36,7 +36,7 @@ public class Couteau extends Projectile{
         boolean EstPerime =false;
         
 
-        if (System.currentTimeMillis()-25> this.getNaissance()){
+        if (System.currentTimeMillis()-1000 > this.getNaissance()){
             EstPerime = true;
         }
 

@@ -71,7 +71,7 @@ public class Main extends javax.swing.JFrame {
                 Moi.Push();
                 Adversaires.charger();
                 
-               // Projectiles.UpdateProjectiles(Moi.getId());
+                Projectiles.UpdateProjectiles(Moi.getId());
                 
                 //if (Moi.getId ==2){
                 //    Bonus.Generer();
@@ -427,6 +427,7 @@ public class Main extends javax.swing.JFrame {
         if(evt.getKeyCode() == evt.VK_RIGHT){
             Moi.setDirection(2);
             this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
+            Projectiles.Afficher();
         }
 
 
