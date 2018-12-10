@@ -25,7 +25,7 @@ import static jdbc.Main.Adversaires;
  */
 public class Jeu {
 
-    private BufferedImage nyancat, fond, spritegauche1, spritegauche2, spritegauche3,
+    private BufferedImage nyancat,map, fond, spritegauche1, spritegauche2, spritegauche3,
             spritegauche4, spritegauche5, spritegauche6, spritegauche7, spritegauche8,
             spritegauche9, spritegauche10, spritedroite1, spritedroite2, spritedroite3,
             spritedroite4, spritedroite5, spritedroite6, spritedroite7, spritedroite8,
@@ -221,6 +221,8 @@ public class Jeu {
             this.spriteVhaut10 = ImageIO.read(new File("ZeldaHautStep10PetitTrV.png"));
             this.spriteVbas10 = ImageIO.read(new File("ZeldaBasStep10PetitTrV.png"));
             this.mur = ImageIO.read(new File("mur.jpg"));
+            this.map = ImageIO.read(new File("map.png"));
+
             this.Moi= moi;
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(Jeu.class.getName()).log(Level.SEVERE, null, ex);
@@ -236,11 +238,13 @@ public class Jeu {
         int x = this.Moi.getX();
         int y = this.Moi.getY();
         //dessiner fond
-        for (int i=0; i<=20; i++){
+      /*  for (int i=0; i<=20; i++){
             for (int j=0; j<=20; j++){
                 contexte.drawImage(this.fond, 0+30*i, 0+30*j, null);
             }
-        }
+        }*/
+        contexte.drawImage(this.map, 0, 0, null);
+
         // dessiner un joueur
         this.AfficherJoueur(contexte,Moi);
         this.AfficherJoueur(contexte,Adversaires.joueur1);
@@ -248,7 +252,7 @@ public class Jeu {
         this.AfficherJoueur(contexte,Adversaires.joueur3);
 
         //dessiner mur
-         for (int i=0; i<=20; i++){
+        /* for (int i=0; i<=20; i++){
         
                 contexte.drawImage(this.mur, 0+30*i, 0, null);
             
@@ -267,7 +271,7 @@ public class Jeu {
         
                 contexte.drawImage(this.mur, 577, 0+30*i, null);
             
-        }
+        }*/
     }
      public void AfficherJoueur(Graphics2D contexte, Joueur j1) {
         int x = j1.getX();
