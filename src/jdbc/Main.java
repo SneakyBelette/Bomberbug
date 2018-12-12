@@ -140,11 +140,50 @@ public class Main extends javax.swing.JFrame {
         
         tache.start(); // lancement de la boucle infinie
         
-        Murs.add(new Mur(0,0,1000,30));
-        Murs.add(new Mur(0,0,30,666));
-        Murs.add(new Mur(970,0,1000,666));
-        Murs.add(new Mur(0,636,1000,666));
-        
+        Murs.add(new Mur(0,0,975,25));
+        Murs.add(new Mur(975,0,1000,666));
+        Murs.add(new Mur(0,641,975,641));
+        Murs.add(new Mur(0,25,25,641));
+        Murs.add(new Mur(87,77,139,127));
+        Murs.add(new Mur(244,90,415,108));
+        Murs.add(new Mur(244,90,264,140));
+        Murs.add(new Mur(212,123,264,140));
+        Murs.add(new Mur(212,123,231,172));
+        Murs.add(new Mur(179,155,231,172));
+        Murs.add(new Mur(179,155,199,205));
+        Murs.add(new Mur(146,189,199,205));
+        Murs.add(new Mur(146,189,166,238));
+        Murs.add(new Mur(0114,220,166,238));
+        Murs.add(new Mur(114,220,134,289));
+        Murs.add(new Mur(83,271,134,289));
+        Murs.add(new Mur(83,271,102,339));
+        Murs.add(new Mur(142,370,195,389));
+        Murs.add(new Mur(164,390,216,406));
+        Murs.add(new Mur(83,465,206,484));
+        Murs.add(new Mur(187,485,205,591));
+        Murs.add(new Mur(84,536,135,590));
+        Murs.add(new Mur(274,458,293,591));
+        Murs.add(new Mur(274,458,524,476));
+        Murs.add(new Mur(433,539,689,557));
+        Murs.add(new Mur(610,460,888,475));
+        Murs.add(new Mur(764,539,887,556));
+        Murs.add(new Mur(887,640,870,539));
+        Murs.add(new Mur(869,385,888,475));
+        Murs.add(new Mur(869,237,888,320));
+        Murs.add(new Mur(869,237,975,256));
+        Murs.add(new Mur(753,237,772,389));
+        Murs.add(new Mur(650,344,670,395));
+        Murs.add(new Mur(310,376,670,395));
+        Murs.add(new Mur(230,267,375,283));
+        Murs.add(new Mur(230,267,250,317));
+        Murs.add(new Mur(320,180,670,198));
+        Murs.add(new Mur(507,85,527,180));
+        Murs.add(new Mur(603,25,623,118));
+        Murs.add(new Mur(693,78,797,95));
+        Murs.add(new Mur(778,78,797,180));
+        Murs.add(new Mur(778,153,904,180));
+        Murs.add(new Mur(898,91,976,110));
+       
         
         
         
