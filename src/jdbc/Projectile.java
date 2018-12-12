@@ -130,11 +130,12 @@ public abstract class Projectile {
     protected ArrayList<Joueur> SontEnRange(){
         ArrayList<Joueur> JoueursEnRange = new ArrayList<Joueur>();
         
-        if (TestChoc(Moi)){
-            JoueursEnRange.add(Moi);
-        }
+     //   if (TestChoc(Moi)){
+     //       JoueursEnRange.add(Moi);
+     //   }
         if (TestChoc(Adversaires.joueur1)){
             JoueursEnRange.add(Adversaires.joueur1);
+            System.out.println("en range ! ");
         }
         if (TestChoc(Adversaires.joueur2)){
             JoueursEnRange.add(Adversaires.joueur2);
@@ -144,7 +145,7 @@ public abstract class Projectile {
         }
         
         return JoueursEnRange;
-    }
+    } 
     
     
     
@@ -204,16 +205,16 @@ public abstract class Projectile {
             int x4=x1;
             int y4=y3;
 
-            if ((this.x-this.largeur/2)<x1 & (this.x+this.largeur/2)>x1 & (this.y-this.hauteur/2)<y1 & (this.y+this.largeur/2)>y1){
+            if ((this.x-this.largeur/2)<x1 & (this.x+this.largeur/2)>x1 & (this.y-this.hauteur/2)<y1 & (this.y+this.hauteur/2)>y1){
                 Choc = true;
             }
-            if ((this.x-this.largeur/2)<x2 & (this.x+this.largeur/2)>x2 & (this.y-this.hauteur/2)<y2 & (this.y+this.largeur/2)>y2){
+            if ((this.x-this.largeur/2)<x2 & (this.x+this.largeur/2)>x2 & (this.y-this.hauteur/2)<y2 & (this.y+this.hauteur/2)>y2){
                 Choc = true;
             }
-            if ((this.x-this.largeur/2)<x3 & (this.x+this.largeur/2)>x3 & (this.y-this.hauteur/2)<y3 & (this.y+this.largeur/2)>y3){
+            if ((this.x-this.largeur/2)<x3 & (this.x+this.largeur/2)>x3 & (this.y-this.hauteur/2)<y3 & (this.y+this.hauteur/2)>y3){
                 Choc = true;
             }
-            if ((this.x-this.largeur/2)<x4 & (this.x+this.largeur/2)>x4 & (this.y-this.hauteur/2)<y4 & (this.y+this.largeur/2)>y4){
+            if ((this.x-this.largeur/2)<x4 & (this.x+this.largeur/2)>x4 & (this.y-this.hauteur/2)<y4 & (this.y+this.hauteur/2)>y4){
                 Choc = true;
             }
         

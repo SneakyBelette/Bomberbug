@@ -21,7 +21,7 @@ public class Couteau extends Projectile{
         
         // /!\ cela créer un couteau FIXE pour le moment /!\
         
-        super("couteau",joueur.getX()+largeurPersos/2,joueur.getY(),0,0,10,10,joueur.getId(),System.currentTimeMillis());
+        super("couteau",joueur.getX()+largeurPersos/2,joueur.getY(),0,0,20,20,joueur.getId(),System.currentTimeMillis());
         
         
     }
