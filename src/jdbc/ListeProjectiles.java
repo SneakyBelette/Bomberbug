@@ -46,13 +46,13 @@ public class ListeProjectiles {
         this.Liste.addAll(Liste);
     }
     
-    public String Afficher(){
+    /*public String Afficher(){
         String LaListe = "";
         for(Projectile proj : Liste){
             LaListe = LaListe + proj.toString();
         }
         return LaListe;
-    }
+    }*/
     
     
     

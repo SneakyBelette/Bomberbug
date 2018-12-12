@@ -7,6 +7,7 @@ package jdbc;
 
 import java.util.ArrayList;
 import static jdbc.Main.Moi;
+import static jdbc.Main.largeurPersos;
 
 /**
  *
@@ -20,7 +21,7 @@ public class Couteau extends Projectile{
         
         // /!\ cela créer un couteau FIXE pour le moment /!\
         
-        super("couteau",joueur.getX(),joueur.getY(),10,0,10,10,joueur.getId(),System.currentTimeMillis());
+        super("couteau",joueur.getX()+largeurPersos/2,joueur.getY(),0,0,20,20,joueur.getId(),System.currentTimeMillis());
         
         
     }
@@ -36,7 +37,7 @@ public class Couteau extends Projectile{
         boolean EstPerime =false;
         
 
-        if (System.currentTimeMillis()-1000 > this.getNaissance()){
+        if (System.currentTimeMillis()-20000 > this.getNaissance()){
             EstPerime = true;
         }
 
@@ -49,7 +50,7 @@ public class Couteau extends Projectile{
         
         for(Joueur joueur : JoueursEnRange){
             joueur.setPv(joueur.getPv()-1);
-            System.out.println("degat couteau" + joueur.getPseudo());
+            System.out.println("degat couteau à " + joueur.getPseudo() +" PV = "+ joueur.getPv());
         }
         
     }
