@@ -134,13 +134,13 @@ public abstract class Projectile {
             JoueursEnRange.add(Moi);
         }
         if (TestChoc(Adversaires.joueur1)){
-            JoueursEnRange.add(Moi);
+            JoueursEnRange.add(Adversaires.joueur1);
         }
         if (TestChoc(Adversaires.joueur2)){
-            JoueursEnRange.add(Moi);
+            JoueursEnRange.add(Adversaires.joueur2);
         }
         if (TestChoc(Adversaires.joueur3)){
-            JoueursEnRange.add(Moi);
+            JoueursEnRange.add(Adversaires.joueur3);
         }
         
         return JoueursEnRange;
