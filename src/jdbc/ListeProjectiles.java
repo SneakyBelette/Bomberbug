@@ -208,11 +208,12 @@ public class ListeProjectiles {
                     
                     
                     this.Liste.add(Proj);
-                    requete.executeUpdate();
+                    
 
-                    requete.close();   
+                     
                     
                 }
+                requete.close();  
                 
 
             } catch (SQLException ex) {
