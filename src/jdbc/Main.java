@@ -34,6 +34,7 @@ public class Main extends javax.swing.JFrame {
     private Graphics2D contexteBuffer;
     public static ListeMur Murs=new ListeMur();
     public static ListeProjectiles Projectiles = new ListeProjectiles();
+    public static ListeProjectiles ProjectilesAAjouter = new ListeProjectiles();
     private Jeu jeu;
     public static int largeurPersos=25;
     public static int hauteurPersos=35;
@@ -426,25 +427,25 @@ public class Main extends javax.swing.JFrame {
         
         if(evt.getKeyCode() == evt.VK_RIGHT){
             Moi.setDirection(2);
-            this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
+            this.ProjectilesAAjouter.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
         }
 
 
         if(evt.getKeyCode() == evt.VK_LEFT){
             Moi.setDirection(4);
-            this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));            
+            this.ProjectilesAAjouter.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));            
         }
         
         
         if(evt.getKeyCode() == evt.VK_UP){
             Moi.setDirection(3);
-            this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
+            this.ProjectilesAAjouter.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
         }
         
         
         if(evt.getKeyCode() == evt.VK_DOWN){
             Moi.setDirection(1);
-            this.Projectiles.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
+            this.ProjectilesAAjouter.addAll(Moi.Attaque(Moi.getArme(), System.currentTimeMillis()));
         }
         
         if(evt.getKeyCode() == evt.VK_SPACE){

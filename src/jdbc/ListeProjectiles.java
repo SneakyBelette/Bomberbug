@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import static jdbc.Main.Moi;
+import static jdbc.Main.ProjectilesAAjouter;
 import static jdbc.Main.connexion;
 
 /**
@@ -149,75 +150,159 @@ public class ListeProjectiles {
     
     public void UpdateProjectiles(int ID){
         
-        this.Liste = new ArrayList<>();
+        boolean EstPerime = false;
         
-        try { 
-            
-            
-            PreparedStatement requete0 = connexion.prepareStatement("SELECT * FROM projectiles ");
-            ResultSet resultat0 = requete0.executeQuery();
-            while (resultat0.next()) {
+        for(Projectile proj : this.Liste){
+            if(proj.getNumero_lanceur()==Moi.getId()){
+                EstPerime = proj.Avancer();
                 
-                
-                Projectile Proj =null;
-                
-                if (resultat0.getString("type")=="Couteau"){
-                    Proj = new Couteau(resultat0.getInt("x"),resultat0.getInt("y"),resultat0.getInt("vitesse x"),resultat0.getInt("vitesse y"),resultat0.getInt("hauteur"),resultat0.getInt("largeur"),resultat0.getInt("numero_lanceur"),(int) resultat0.getLong("timer"));
-                }
-                
-                
-                Liste.add(Proj);
             }
+            if (proj.getNumero_lanceur()!=Moi.getId() || EstPerime==true){
+                this.Liste.remove(proj);
+            }
+        }
+        
+        
+        for(Projectile proj : this.Liste){
+            try {
+                PreparedStatement requete3 = connexion.prepareStatement("UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur ="+Moi.getId()+"");
+                requete3.setInt(1, proj.getX());
+                requete3.setInt(2, proj.getY());
+                requete3.setLong(3, proj.getNaissance());
+                    
+                requete3.executeUpdate();
 
-            requete0.close();
-           
-            
-            
-            
+                requete3.close();   
 
-            PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur ="+ID+";");
-            ResultSet resultat = requete.executeQuery();
-            boolean AExpire=false;
-            while (resultat.next()) {
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            
+        }
+        
+        try {
+                PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur !="+ID+";");
+                ResultSet resultat = requete.executeQuery();
+                while (resultat.next()) {
                 
-                Projectile Proj = new Couteau(Moi);
+                    Projectile Proj = new Couteau(Moi);
                 
                         
-                if (resultat.getString("type")=="Couteau"){
-                    Proj = new Couteau(resultat0.getInt("x"),resultat0.getInt("y"),resultat0.getInt("vitesse x"),resultat0.getInt("vitesse y"),resultat0.getInt("hauteur"),resultat0.getInt("largeur"),resultat0.getInt("numero_lanceur"),(int) resultat0.getLong("timer"));
+                    if (resultat.getString("type")=="Couteau"){
+                        Proj = new Couteau(resultat.getInt("x"),resultat.getInt("y"),resultat.getInt("vitesse x"),resultat.getInt("vitesse y"),resultat.getInt("hauteur"),resultat.getInt("largeur"),resultat.getInt("numero_lanceur"),(int) resultat.getLong("timer"));
+                    }
+                    
+                    
+                    this.Liste.add(Proj);
+                    
+                    
                 }
                 
-                
-                AExpire = Proj.Avancer();
-                
-                if (AExpire){
-                    PreparedStatement requete2 = connexion.prepareStatement("DELETE FROM projectiles WHERE timer = ? AND numero_lanceur=? ");
-                    requete2.setLong(1, Proj.getNaissance());
-                    requete2.setInt(2, Proj.getNumero_lanceur());
-                    
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        
+        if (ProjectilesAAjouter.Liste.size()>0){
+            for(Projectile proj : ProjectilesAAjouter.Liste){
+
+                try {
+                    PreparedStatement requete2 = connexion.prepareStatement("INSERT INTO projectiles VALUES (?,?,?,?,?,?,?,?,?)");
+                    requete2.setString(1, proj.getType());
+                    requete2.setInt(2, proj.getX());
+                    requete2.setInt(3, proj.getY());
+                    requete2.setLong(4, proj.getNaissance());
+                    requete2.setInt(5, proj.getVitessex());
+                    requete2.setInt(6, proj.getVitessey());
+                    requete2.setInt(7, proj.getHauteur());
+                    requete2.setInt(8, proj.getLargeur());
+                    requete2.setInt(9, proj.getNumero_lanceur());
+
                     requete2.executeUpdate();
 
-                    requete2.close();
-                }else{
-                    
-                    PreparedStatement requete3 = connexion.prepareStatement("UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur =?");
-                    requete3.setInt(1, Proj.getX());
-                    requete3.setInt(2, Proj.getY());
-                    requete3.setLong(3, Proj.getNaissance());
-                    requete3.setInt(4, Proj.getNumero_lanceur());
-                    
-                    requete3.executeUpdate();
+                    requete2.close();   
 
-                    requete3.close();   
-                    
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
                 }
                 
-            }
 
+            }
             
-            requete.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            ProjectilesAAjouter.Liste = new ArrayList<Projectile>();
         }
+        
+        
+                
+               
+        
+//        try {
+//            
+//            
+//            PreparedStatement requete0 = connexion.prepareStatement("SELECT * FROM projectiles ");
+//            ResultSet resultat0 = requete0.executeQuery();
+//            while (resultat0.next()) {
+//                
+//                
+//                Projectile Proj =null;
+//                
+//                if (resultat0.getString("type")=="Couteau"){
+//                    Proj = new Couteau(resultat0.getInt("x"),resultat0.getInt("y"),resultat0.getInt("vitesse x"),resultat0.getInt("vitesse y"),resultat0.getInt("hauteur"),resultat0.getInt("largeur"),resultat0.getInt("numero_lanceur"),(int) resultat0.getLong("timer"));
+//                }
+//                
+//                
+//                Liste.add(Proj);
+//            }
+//
+//            requete0.close();
+//           
+//            
+//            
+//            
+//
+//            PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur ="+ID+";");
+//            ResultSet resultat = requete.executeQuery();
+//            boolean AExpire=false;
+//            while (resultat.next()) {
+//                
+//                Projectile Proj = new Couteau(Moi);
+//                
+//                        
+//                if (resultat.getString("type")=="Couteau"){
+//                    Proj = new Couteau(resultat0.getInt("x"),resultat0.getInt("y"),resultat0.getInt("vitesse x"),resultat0.getInt("vitesse y"),resultat0.getInt("hauteur"),resultat0.getInt("largeur"),resultat0.getInt("numero_lanceur"),(int) resultat0.getLong("timer"));
+//                }
+//                
+//                
+//                AExpire = Proj.Avancer();
+//                
+//                if (AExpire){
+//                    PreparedStatement requete2 = connexion.prepareStatement("DELETE FROM projectiles WHERE timer = ? AND numero_lanceur=? ");
+//                    requete2.setLong(1, Proj.getNaissance());
+//                    requete2.setInt(2, Proj.getNumero_lanceur());
+//                    
+//                    requete2.executeUpdate();
+//
+//                    requete2.close();
+//                }else{
+//                    
+//                    PreparedStatement requete3 = connexion.prepareStatement("UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur =?");
+//                    requete3.setInt(1, Proj.getX());
+//                    requete3.setInt(2, Proj.getY());
+//                    requete3.setLong(3, Proj.getNaissance());
+//                    requete3.setInt(4, Proj.getNumero_lanceur());
+//                    
+//                    requete3.executeUpdate();
+//
+//                    requete3.close();   
+//                    
+//                }
+//                
+//            }
+//
+//            
+//            requete.close();
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
     }
 }
