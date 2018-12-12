@@ -151,8 +151,11 @@ public class ListeProjectiles {
     public void UpdateProjectiles(int ID){
         
         boolean EstPerime = false;
-        
-        for(Projectile proj : this.Liste){
+
+        ArrayList<Projectile> Liste2 = new ArrayList<Projectile>();
+        Liste2.addAll(this.Liste);
+        for(Projectile proj : Liste2){
+            EstPerime = false;
             if(proj.getNumero_lanceur()==Moi.getId()){
                 EstPerime = proj.Avancer();
                 
@@ -195,7 +198,7 @@ public class ListeProjectiles {
         }
         
         try {
-                PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur !="+ID+";");
+                PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur !="+Moi.getId()+";");
                 ResultSet resultat = requete.executeQuery();
                 while (resultat.next()) {
                 
