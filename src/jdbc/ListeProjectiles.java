@@ -151,17 +151,23 @@ public class ListeProjectiles {
     public void UpdateProjectiles(int ID){
         
         boolean EstPerime = false;
-
+        
         ArrayList<Projectile> Liste2 = new ArrayList<Projectile>();
         Liste2.addAll(this.Liste);
         for(Projectile proj : Liste2){
+            
             EstPerime = false;
-            if(proj.getNumero_lanceur()==Moi.getId()){
+            
+            if(proj.getNumero_lanceur()==ID){
                 EstPerime = proj.Avancer();
-                
-            }else{
-                this.Liste.remove(proj);
+
             }
+            if(proj.getNumero_lanceur()!=ID){
+                
+                this.Liste.remove(proj);
+                
+            }
+            
             if (EstPerime){
                 this.Liste.remove(proj);
                 try{
@@ -182,7 +188,7 @@ public class ListeProjectiles {
         
         for(Projectile proj : this.Liste){
             try {
-                PreparedStatement requete3 = connexion.prepareStatement("UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur ="+Moi.getId()+"");
+                PreparedStatement requete3 = connexion.prepareStatement("UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur ="+ID+"");
                 requete3.setInt(1, proj.getX());
                 requete3.setInt(2, proj.getY());
                 requete3.setLong(3, proj.getNaissance());
@@ -198,15 +204,17 @@ public class ListeProjectiles {
         }
         
         try {
-                PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur !="+Moi.getId()+";");
+                PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur <>"+ID+";");
                 ResultSet resultat = requete.executeQuery();
                 while (resultat.next()) {
                 
                     Projectile Proj = new Couteau(Moi);
                 
+                       
+
+                    if (resultat.getString("type").equals("couteau")){
                         
-                    if (resultat.getString("type")=="Couteau"){
-                        Proj = new Couteau(resultat.getInt("x"),resultat.getInt("y"),resultat.getInt("vitesse x"),resultat.getInt("vitesse y"),resultat.getInt("hauteur"),resultat.getInt("largeur"),resultat.getInt("numero_lanceur"),(int) resultat.getLong("timer"));
+                        Proj = new Couteau(resultat.getInt("x"),resultat.getInt("y"),resultat.getInt("vitesse x"),resultat.getInt("vitesse y"),resultat.getInt("hauteur"),resultat.getInt("largeur"),resultat.getInt("numero_lanceur"),resultat.getLong("timer"));
                     }
                     
                     
@@ -245,6 +253,8 @@ public class ListeProjectiles {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+                
+                this.Liste.add(proj);
                 
 
             }

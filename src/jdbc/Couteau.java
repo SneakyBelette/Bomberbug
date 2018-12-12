@@ -40,7 +40,7 @@ public class Couteau extends Projectile{
         this.y = joueur.getY()+b;
     }
     
-    public Couteau(int x,int y, int dirX,int dirY,int hauteur, int largeur,int id, int timer) {
+    public Couteau(int x,int y, int dirX,int dirY,int hauteur, int largeur,int id, long timer) {
         
         super("couteau",x,y,dirX,dirY,hauteur,largeur,id,timer);
         
