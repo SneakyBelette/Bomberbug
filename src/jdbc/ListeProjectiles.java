@@ -156,9 +156,23 @@ public class ListeProjectiles {
             if(proj.getNumero_lanceur()==Moi.getId()){
                 EstPerime = proj.Avancer();
                 
-            }
-            if (proj.getNumero_lanceur()!=Moi.getId() || EstPerime==true){
+            }else{
                 this.Liste.remove(proj);
+            }
+            if (EstPerime){
+                this.Liste.remove(proj);
+                try{
+                    PreparedStatement requete4 = connexion.prepareStatement("DELETE FROM projectiles WHERE timer = ? AND numero_lanceur=? ");
+                    requete4.setLong(1, proj.getNaissance());
+                    requete4.setInt(2, proj.getNumero_lanceur());
+                    
+                    requete4.executeUpdate();
+
+                    requete4.close();
+                }catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+                
             }
         }
         
@@ -194,7 +208,9 @@ public class ListeProjectiles {
                     
                     
                     this.Liste.add(Proj);
-                    
+                    requete.executeUpdate();
+
+                    requete.close();   
                     
                 }
                 
