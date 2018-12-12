@@ -7,6 +7,7 @@ package jdbc;
 
 import java.util.ArrayList;
 import static jdbc.Main.Moi;
+import static jdbc.Main.hauteurPersos;
 import static jdbc.Main.largeurPersos;
 
 /**
@@ -21,9 +22,22 @@ public class Couteau extends Projectile{
         
         // /!\ cela créer un couteau FIXE pour le moment /!\
         
-        super("couteau",joueur.getX()+largeurPersos/2,joueur.getY(),0,0,20,20,joueur.getId(),System.currentTimeMillis());
+        super("couteau",joueur.getX(),joueur.getY(),0,0,20,20,joueur.getId(),System.currentTimeMillis());
         
+        int a = 0;
+        int b = 0;
         
+        if(joueur.getDirection()==1){
+            b = hauteurPersos/2;
+        }else if(joueur.getDirection()==2){
+            a = largeurPersos/2;
+        }else if(joueur.getDirection()==3){
+            b = -hauteurPersos/2;
+        }else if(joueur.getDirection()==4){
+            a = -largeurPersos/2;
+        }
+        this.x = joueur.getX()+a;
+        this.y = joueur.getY()+b;
     }
     
     public Couteau(int x,int y, int dirX,int dirY,int hauteur, int largeur,int id, int timer) {
