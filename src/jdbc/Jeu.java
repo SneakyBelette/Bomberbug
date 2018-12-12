@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import javax.imageio.ImageIO;
 import static jdbc.Main.Adversaires;
+import static jdbc.Main.Projectiles;
 
 /**
  *
@@ -53,7 +54,7 @@ public class Jeu {
             spriteVdroite9, spriteVdroite10, spriteVbas1, spriteVbas2, spriteVbas3, spriteVbas4,
             spriteVbas5, spriteVbas6, spriteVbas7, spriteVbas8, spriteVbas9, spriteVbas10,
             spriteVhaut1, spriteVhaut2, spriteVhaut3, spriteVhaut4, spriteVhaut5, spriteVhaut6,
-            spriteVhaut7, spriteVhaut8, spriteVhaut9, spriteVhaut10;
+            spriteVhaut7, spriteVhaut8, spriteVhaut9, spriteVhaut10, couteauPti;
     private Joueur Moi;
 
     public Jeu(Joueur moi) {
@@ -222,6 +223,7 @@ public class Jeu {
             this.spriteVbas10 = ImageIO.read(new File("ZeldaBasStep10PetitTrV.png"));
             this.mur = ImageIO.read(new File("mur.jpg"));
             this.map = ImageIO.read(new File("map.png"));
+            this.couteauPti = ImageIO.read(new File("couteauPti.png"));
 
             this.Moi= moi;
         } catch (IOException ex) {
@@ -251,6 +253,14 @@ public class Jeu {
         this.AfficherJoueur(contexte,Adversaires.joueur2);
         this.AfficherJoueur(contexte,Adversaires.joueur3);
 
+        // dessiner projectile
+        
+        for(Projectile proj : Projectiles.getListe()){
+            
+            this.AfficherProjectile(proj, contexte);
+            
+        }
+        
         //dessiner mur
         /* for (int i=0; i<=20; i++){
         
@@ -272,7 +282,21 @@ public class Jeu {
                 contexte.drawImage(this.mur, 577, 0+30*i, null);
             
         }*/
+         
+
+        
+        
     }
+        public void AfficherProjectile(Projectile Proj, Graphics2D contexte){
+            int x = Proj.getX();
+            int y = Proj.getY();
+
+            if (Proj.getType()=="couteau"){
+                contexte.drawImage(this.couteauPti, x, y, null);
+            }
+        } 
+    
+    
      public void AfficherJoueur(Graphics2D contexte, Joueur j1) {
         int x = j1.getX();
         int y = j1.getY();
