@@ -139,10 +139,10 @@ public class Main extends javax.swing.JFrame {
         
         tache.start(); // lancement de la boucle infinie
         
-        Murs.add(new Mur(0,0,577,30));
-        Murs.add(new Mur(0,0,30,350));
-        Murs.add(new Mur(547,0,577,350));
-        Murs.add(new Mur(0,310,577,350));
+        Murs.add(new Mur(0,0,1000,30));
+        Murs.add(new Mur(0,0,30,666));
+        Murs.add(new Mur(970,0,1000,666));
+        Murs.add(new Mur(0,636,1000,666));
         
         
         

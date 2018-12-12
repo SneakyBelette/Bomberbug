@@ -241,6 +241,8 @@ public class Logger extends javax.swing.JFrame {
         // TODO add your handling code here:
         BaseJoueur BaseVide = new BaseJoueur();
         BaseJoueur.nettoyer();
+        ListeProjectiles liste = new ListeProjectiles();
+        liste.Nettoyer();
         
         
     }//GEN-LAST:event_jButton2MouseClicked

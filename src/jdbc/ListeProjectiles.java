@@ -129,6 +129,24 @@ public class ListeProjectiles {
 //    }
     
     
+    public void Nettoyer(){
+        
+        try {
+
+           
+            PreparedStatement requete = connexion.prepareStatement("DELETE FROM projectiles ");
+            requete.executeUpdate();
+
+            requete.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        
+    }
+    
+    
     public void UpdateProjectiles(int ID){
         
         this.Liste = new ArrayList<>();
