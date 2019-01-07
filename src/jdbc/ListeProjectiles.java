@@ -194,7 +194,7 @@ public class ListeProjectiles {
             
                 Projectile proj = this.Liste.get(i);
             
-                PreparedStatement requete3 = connexion.prepareStatement("JOIN UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur ="+ID+"");
+                PreparedStatement requete3 = connexion.prepareStatement("UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur ="+ID+"");
                 requete3.setInt(1, proj.getX());
                 requete3.setInt(2, proj.getY());
                 requete3.setLong(3, proj.getNaissance());
