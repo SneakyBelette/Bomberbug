@@ -317,10 +317,6 @@ public class Joueur {
                 Liste.add(proj);
                 this.munition = this.munition -1;
             }
-            
-            
-            System.out.println("Attaque !");
-            System.out.println(System.currentTimeMillis());
         }
         return Liste;
     }
