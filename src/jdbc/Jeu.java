@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import javax.imageio.ImageIO;
 import static jdbc.Main.Adversaires;
+import static jdbc.Main.ListeDesBonus;
 import static jdbc.Main.Projectiles;
 
 /**
@@ -54,7 +55,7 @@ public class Jeu {
             spriteVdroite9, spriteVdroite10, spriteVbas1, spriteVbas2, spriteVbas3, spriteVbas4,
             spriteVbas5, spriteVbas6, spriteVbas7, spriteVbas8, spriteVbas9, spriteVbas10,
             spriteVhaut1, spriteVhaut2, spriteVhaut3, spriteVhaut4, spriteVhaut5, spriteVhaut6,
-            spriteVhaut7, spriteVhaut8, spriteVhaut9, spriteVhaut10, couteauPti;
+            spriteVhaut7, spriteVhaut8, spriteVhaut9, spriteVhaut10, couteauPti,grenade;
     private Joueur Moi;
 
     public Jeu(Joueur moi) {
@@ -224,6 +225,7 @@ public class Jeu {
             this.mur = ImageIO.read(new File("mur.jpg"));
             this.map = ImageIO.read(new File("map.png"));
             this.couteauPti = ImageIO.read(new File("couteauPti.png"));
+            this.grenade = ImageIO.read(new File("bombe.png"));
 
             this.Moi= moi;
         } catch (IOException ex) {
@@ -261,6 +263,11 @@ public class Jeu {
             
         }
         
+        for (Bonus bonus : ListeDesBonus.getListe()){
+            
+            this.AfficherBonus(bonus,contexte);
+        }
+        
         //dessiner mur
         /* for (int i=0; i<=20; i++){
         
@@ -291,10 +298,28 @@ public class Jeu {
             int x = Proj.getX();
             int y = Proj.getY();
 
-            if (Proj.getType()=="couteau"){
+            if (Proj.getType()=="couteau" && Proj.getVitessex()>0){
                 contexte.drawImage(this.couteauPti, x, y, null);
             }
+            if (Proj.getType()=="grenade"){
+                contexte.drawImage(this.grenade, x, y, null);
+            }
         } 
+        
+        public void AfficherBonus(Bonus bonus, Graphics2D contexte){
+            int x = bonus.getX();
+            int y = bonus.getY();
+
+            if (bonus.getType()=="BonusArc" ){
+                //contexte.drawImage(, x, y, null);
+            }
+            if (bonus.getType()=="lancegrenade"){
+                //contexte.drawImage(, x, y, null);
+            }
+            if (bonus.getType()=="BonusMunitions"){
+                //contexte.drawImage(, x, y, null);
+            }
+        }
     
     
      public void AfficherJoueur(Graphics2D contexte, Joueur j1) {

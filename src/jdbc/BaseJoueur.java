@@ -30,8 +30,8 @@ public class BaseJoueur {
                 PreparedStatement requete = connexion.prepareStatement("UPDATE Joueur SET x = ?, y = ?, pv = ?, arme = ?, direction = ?, etat = ?, munitions =?,pseudo=? WHERE id =?");
                 requete.setInt(1,50);
                 requete.setInt(2,50);
-                requete.setInt(3,0);
-                requete.setString(4, "aucune");
+                requete.setInt(3,3);
+                requete.setString(4, "couteau");
                 requete.setInt(5,1);
                 requete.setInt(6,-1);
                 requete.setInt(7,1);
@@ -44,8 +44,8 @@ public class BaseJoueur {
                 PreparedStatement requete2 = connexion.prepareStatement("UPDATE Joueur SET x = ?, y = ?, pv = ?, arme = ?, direction = ?, etat = ?, munitions =?,pseudo=? WHERE id =?");
                 requete2.setInt(1,200);
                 requete2.setInt(2,50);
-                requete2.setInt(3,1);
-                requete2.setString(4, "aucune");
+                requete2.setInt(3,3);
+                requete2.setString(4, "couteau");
                 requete2.setInt(5,1);
                 requete2.setInt(6,-1);
                 requete2.setInt(7,1);
@@ -58,8 +58,8 @@ public class BaseJoueur {
                 PreparedStatement requete3 = connexion.prepareStatement("UPDATE Joueur SET x = ?, y = ?, pv = ?, arme = ?, direction = ?, etat = ?, munitions =?,pseudo=? WHERE id =?");
                 requete3.setInt(1,50);
                 requete3.setInt(2,200);
-                requete3.setInt(3,2);
-                requete3.setString(4, "aucune");
+                requete3.setInt(3,3);
+                requete3.setString(4, "couteau");
                 requete3.setInt(5,1);
                 requete3.setInt(6,-1);
                 requete3.setInt(7,1);
@@ -73,7 +73,7 @@ public class BaseJoueur {
                 requete4.setInt(1,200);
                 requete4.setInt(2,200);
                 requete4.setInt(3,3);
-                requete4.setString(4, "aucune");
+                requete4.setString(4, "couteau");
                 requete4.setInt(5,1);
                 requete4.setInt(6,-1);
                 requete4.setInt(7,1);

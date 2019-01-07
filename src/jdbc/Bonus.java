@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import static jdbc.Main.connexion;
 import static jdbc.Main.hauteurPersos;
 import static jdbc.Main.largeurPersos;
-import static jdbc.Main.largeurbonus;
 
 /**
  *
@@ -69,6 +68,26 @@ public abstract class Bonus {
         }
     }
     
+    protected void Enlever(){
+        
+        try {
+
+            PreparedStatement requete = connexion.prepareStatement("DELETE FROM bonus WHERE type =? AND x=? AND y=? ");
+            requete.setString(1, this.getType().toString());
+            requete.setInt(2, this.getX());
+            requete.setInt(3, this.getY());
+
+            requete.executeUpdate();
+
+            requete.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+    
+    
     protected boolean TestChoc(Joueur joueur){
         boolean Choc = false;
         
@@ -77,26 +96,19 @@ public abstract class Bonus {
         //par en haut à gauche et en tournant dans le sens horaire
         
             
-        
-            int x1=joueur.getX()-largeurPersos/2;
-            int y1=joueur.getY()-hauteurPersos/2;
-            int x2=joueur.getX()+largeurPersos/2;
-            int y2=y1;
-            int x3=x2;
-            int y3=joueur.getY()+hauteurPersos/2;
-            int x4=x1;
-            int y4=y3;
+        int x1=joueur.getX();
+            int y1=joueur.getY();
+            int x2=joueur.getX()+largeurPersos;
+            int y2=joueur.getY()+hauteurPersos;
+            
 
-            if ((this.x-largeurbonus/2)<x1 & (this.x+largeurbonus/2)>x1 & (this.y-largeurbonus/2)<y1 & (this.y+largeurbonus/2)>y1){
+            if ((this.x)>x1 & (this.x)<x2 & (this.y)>y1 & (this.y)<y2){
                 Choc = true;
-            }
-            if ((this.x-largeurbonus/2)<x2 & (this.x+largeurbonus/2)>x2 & (this.y-largeurbonus/2)<y2 & (this.y+largeurbonus/2)>y2){
+            }if ((this.x+10)>x1 & (this.x+10)<x2 & (this.y)>y1 & (this.y)<y2){
                 Choc = true;
-            }
-            if ((this.x-largeurbonus/2)<x3 & (this.x+largeurbonus/2)>x3 & (this.y-largeurbonus/2)<y3 & (this.y+largeurbonus/2)>y3){
+            }if ((this.x)>x1 & (this.x)<x2 & (this.y+10)>y1 & (this.y+10)<y2){
                 Choc = true;
-            }
-            if ((this.x-largeurbonus/2)<x4 & (this.x+largeurbonus/2)>x4 & (this.y-largeurbonus/2)<y4 & (this.y+largeurbonus/2)>y4){
+            }if ((this.x+10)>x1 & (this.x+10)<x2 & (this.y+10)>y1 & (this.y+10)<y2){
                 Choc = true;
             }
 

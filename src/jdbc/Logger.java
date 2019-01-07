@@ -243,6 +243,8 @@ public class Logger extends javax.swing.JFrame {
         BaseJoueur.nettoyer();
         ListeProjectiles liste = new ListeProjectiles();
         liste.Nettoyer();
+        ListeBonus liste2 = new ListeBonus();
+        liste2.NettoyerBonus();
         
         
     }//GEN-LAST:event_jButton2MouseClicked

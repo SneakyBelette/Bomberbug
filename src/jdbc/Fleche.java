@@ -6,7 +6,6 @@
 package jdbc;
 
 import java.util.ArrayList;
-import static jdbc.Main.Moi;
 import static jdbc.Main.hauteurPersos;
 import static jdbc.Main.largeurPersos;
 
@@ -14,14 +13,16 @@ import static jdbc.Main.largeurPersos;
  *
  * @author pdolle
  */
-public class Couteau extends Projectile{
+public class Fleche extends Projectile{ 
     
     
     //constructeur
-    public Couteau(Joueur joueur) {
+    public Fleche(Joueur joueur) {
         
+        // /!\ cela créer un couteau FIXE pour le moment /!\
 
-        super("couteau",joueur.getX(),joueur.getY(),0,0,20,20,joueur.getId(),System.currentTimeMillis());
+        
+        super("fleche",joueur.getX(),joueur.getY(),0,0,0,0,joueur.getId(),System.currentTimeMillis());
         
         int a = 0;
         int b = 0;
@@ -29,29 +30,37 @@ public class Couteau extends Projectile{
         if(joueur.getDirection()==1){
             
             b = hauteurPersos/2;
-            this.vitessey=15;
+            this.vitessey=10;
+            this.largeur = 5;
+            this.hauteur = 20;
             
         }else if(joueur.getDirection()==2){
             
             a = largeurPersos/2;
-            this.vitessex=15;
+            this.vitessex=10;
+            this.largeur = 20;
+            this.hauteur = 5;
             
         }else if(joueur.getDirection()==3){
             
             b = -hauteurPersos/2;
-            this.vitessey=-15;
+            this.vitessey=-10;
+            this.largeur = 5;
+            this.hauteur = 20;
             
         }else if(joueur.getDirection()==4){
             
             a = -largeurPersos/2;
-            this.vitessex=-15;
+            this.vitessex=-10;
+            this.largeur = 20;
+            this.hauteur = 5;
             
         }
         this.x = joueur.getX()+a;
         this.y = joueur.getY()+b;
     }
     
-    public Couteau(int x,int y, int dirX,int dirY,int hauteur, int largeur,int id, long timer) {
+    public Fleche(int x,int y, int dirX,int dirY,int hauteur, int largeur,int id, long timer) {
         
         super("couteau",x,y,dirX,dirY,hauteur,largeur,id,timer);
         
@@ -62,7 +71,7 @@ public class Couteau extends Projectile{
         boolean EstPerime =false;
         
 
-        if (System.currentTimeMillis()-500 > this.getNaissance()){
+        if (System.currentTimeMillis()-2000 > this.getNaissance()){
             EstPerime = true;
         }
 
@@ -75,9 +84,8 @@ public class Couteau extends Projectile{
         
         for(Joueur joueur : JoueursEnRange){
             joueur.EnleverPv();
-            System.out.println("degat couteau à " + joueur.getPseudo() +" PV = "+ joueur.getPv());
+            System.out.println("degat fleche à " + joueur.getPseudo() +" PV = "+ joueur.getPv());
         }
-        
         
     }
     
@@ -107,3 +115,4 @@ public class Couteau extends Projectile{
     
     
 }
+

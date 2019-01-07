@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import static jdbc.Main.Adversaires;
 import static jdbc.Main.Moi;
+import static jdbc.Main.Murs;
 import static jdbc.Main.connexion;
 import static jdbc.Main.hauteurPersos;
 import static jdbc.Main.largeurPersos;
@@ -161,28 +162,32 @@ public abstract class Projectile {
         for(Joueur joueur : listeJoueur){
             
         
-            int x1=joueur.getX()-largeurPersos/2;
-            int y1=joueur.getY()-hauteurPersos/2;
-            int x2=joueur.getX()+largeurPersos/2;
-            int y2=y1;
-            int x3=x2;
-            int y3=joueur.getY()+hauteurPersos/2;
-            int x4=x1;
-            int y4=y3;
+            int x1=joueur.getX();
+            int y1=joueur.getY();
+            int x2=joueur.getX()+largeurPersos;
+            int y2=joueur.getY()+hauteurPersos;
+            
 
-            if ((this.x-this.largeur/2)<x1 & (this.x+this.largeur/2)>x1 & (this.y-this.hauteur/2)<y1 & (this.y+this.largeur/2)>y1){
+            if ((this.x)>x1 & (this.x)<x2 & (this.y)>y1 & (this.y)<y2){
                 Choc = true;
-            }
-            if ((this.x-this.largeur/2)<x2 & (this.x+this.largeur/2)>x2 & (this.y-this.hauteur/2)<y2 & (this.y+this.largeur/2)>y2){
+            }if ((this.x+this.largeur)>x1 & (this.x+this.largeur)<x2 & (this.y)>y1 & (this.y)<y2){
                 Choc = true;
-            }
-            if ((this.x-this.largeur/2)<x3 & (this.x+this.largeur/2)>x3 & (this.y-this.hauteur/2)<y3 & (this.y+this.largeur/2)>y3){
+            }if ((this.x)>x1 & (this.x)<x2 & (this.y+this.hauteur)>y1 & (this.y+this.hauteur)<y2){
                 Choc = true;
-            }
-            if ((this.x-this.largeur/2)<x4 & (this.x+this.largeur/2)>x4 & (this.y-this.hauteur/2)<y4 & (this.y+this.largeur/2)>y4){
+            }if ((this.x+this.largeur)>x1 & (this.x+this.largeur)<x2 & (this.y+this.hauteur)>y1 & (this.y+this.hauteur)<y2){
                 Choc = true;
             }
         }
+        
+    if( Murs.estDansMur(this.x, this.y) || Murs.estDansMur(this.x+this.largeur, this.y) || Murs.estDansMur(this.x, this.y+this.hauteur) || Murs.estDansMur(this.x+this.largeur, this.y+this.hauteur)){
+        
+        Choc = true;
+        
+    }
+        
+    
+        
+        
         
         return Choc;
     }

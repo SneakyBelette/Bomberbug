@@ -228,8 +228,8 @@ public class Joueur {
     
      public void deplacerDroite(){
          
-        if (this.EstOccupee(this.x+3, this.y)==false && deplacerDroite == true){
-            this.x = this.x+3;
+        if (this.EstOccupee(this.x+8, this.y)==false && deplacerDroite == true){
+            this.x = this.x+8;
         }
         
         this.direction = 2;
@@ -237,8 +237,8 @@ public class Joueur {
      
     public void deplacerGauche(){
         
-        if (this.EstOccupee(this.x-3, this.y)==false && deplacerGauche == true){
-            this.x=this.x-3;       
+        if (this.EstOccupee(this.x-8, this.y)==false && deplacerGauche == true){
+            this.x=this.x-8;       
         }
         this.direction = 4;
 
@@ -246,8 +246,8 @@ public class Joueur {
     
     public void deplacerHaut(){
         
-        if (this.EstOccupee(this.x, this.y-3)==false && deplacerHaut == true){
-            this.y= this.y-3;
+        if (this.EstOccupee(this.x, this.y-8)==false && deplacerHaut == true){
+            this.y= this.y-8;
         }
         
         this.direction = 3;
@@ -255,8 +255,8 @@ public class Joueur {
     
     public void deplacerBas(){
         
-        if (this.EstOccupee(this.x, this.y+3)==false && deplacerBas == true){
-            this.y= this.y+3;
+        if (this.EstOccupee(this.x, this.y+8)==false && deplacerBas == true){
+            this.y= this.y+8;
         }
         this.direction = 1;
         
@@ -278,8 +278,8 @@ public class Joueur {
     }
     
     public boolean EstOccupee(int x, int y){
-         boolean estoccupee;
-        
+        boolean estoccupee;
+        x=x-3;
         
         estoccupee = Adversaires.joueur1.getX()+largeurPersos>x && Adversaires.joueur1.getX()-largeurPersos<x && Adversaires.joueur1.getY()+hauteurPersos>y && Adversaires.joueur1.getY()-hauteurPersos<y;
 
@@ -291,7 +291,7 @@ public class Joueur {
             estoccupee = true;
         }
         
-        if (Murs.estDansMur(x+largeurPersos/2,y+largeurPersos/2)){
+        if (Murs.estDansMur(x+largeurPersos,y+hauteurPersos) || Murs.estDansMur(x,y+hauteurPersos) || Murs.estDansMur(x+largeurPersos,y) || Murs.estDansMur(x,y) || Murs.estDansMur(x,y+hauteurPersos/2) || Murs.estDansMur(x+largeurPersos,y+hauteurPersos/2) ){
             estoccupee = true;
             
         }
@@ -303,11 +303,20 @@ public class Joueur {
         ArrayList<Projectile> Liste = new ArrayList<>();
         if(temps - this.derniereAttaque > this.tempsEntreAttaque){
             this.derniereAttaque = System.currentTimeMillis();
-            Projectile proj = new Couteau(Moi);
-            Liste.add(proj);
-            this.munition = this.munition -1;
-            System.out.println("Attaque !");
-            System.out.println(System.currentTimeMillis());
+            if (this.getArme().equals("couteau")){
+                Projectile proj = new Couteau(Moi);
+                Liste.add(proj);
+            }
+            if (this.arme.equals("fleche") || this.munition>0){
+                Projectile proj = new Fleche(Moi);
+                Liste.add(proj);
+                this.munition = this.munition -1;
+            }
+            if (this.arme.equals("grenade") || this.munition>0){
+                Projectile proj = new Grenade(Moi);
+                Liste.add(proj);
+                this.munition = this.munition -1;
+            }
         }
         return Liste;
     }
@@ -321,8 +330,36 @@ public class Joueur {
         }
     }
     
+    public void EnleverPv(){
+        
+         try {
+
+
+            PreparedStatement requete = connexion.prepareStatement("UPDATE joueur SET pv = ? WHERE id = ?");
+
+            requete.setInt(1,this.pv-1);
+            requete.setInt(2,this.id);
+
+            //System.out.println(requete);
+            requete.executeUpdate();
+
+            requete.close();
+            
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+    
     
     public void Push(){
+        
+        if (Moi.getPv()<1){
+            Moi.setPseudo("MORT");
+            Moi.setX(-200);
+            Moi.setArme("aucune");
+        }
         
         try {
 
