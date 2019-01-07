@@ -27,7 +27,7 @@ import static jdbc.Main.Projectiles;
  */
 public class Jeu {
 
-    private BufferedImage nyancat,map, fond, spritegauche1, spritegauche2, spritegauche3,
+    private BufferedImage nyancat,map,bowPti,munition,  fond, spritegauche1, spritegauche2, spritegauche3,
             spritegauche4, spritegauche5, spritegauche6, spritegauche7, spritegauche8,
             spritegauche9, spritegauche10, spritedroite1, spritedroite2, spritedroite3,
             spritedroite4, spritedroite5, spritedroite6, spritedroite7, spritedroite8,
@@ -55,7 +55,7 @@ public class Jeu {
             spriteVdroite9, spriteVdroite10, spriteVbas1, spriteVbas2, spriteVbas3, spriteVbas4,
             spriteVbas5, spriteVbas6, spriteVbas7, spriteVbas8, spriteVbas9, spriteVbas10,
             spriteVhaut1, spriteVhaut2, spriteVhaut3, spriteVhaut4, spriteVhaut5, spriteVhaut6,
-            spriteVhaut7, spriteVhaut8, spriteVhaut9, spriteVhaut10, couteauPti,grenade;
+            spriteVhaut7, spriteVhaut8, spriteVhaut9, spriteVhaut10, couteauPtiDroite, couteauPtiHaut,couteauPtiBas,couteauPtiGauche,grenade;
     private Joueur Moi;
 
     public Jeu(Joueur moi) {
@@ -224,8 +224,13 @@ public class Jeu {
             this.spriteVbas10 = ImageIO.read(new File("ZeldaBasStep10PetitTrV.png"));
             this.mur = ImageIO.read(new File("mur.jpg"));
             this.map = ImageIO.read(new File("map.png"));
-            this.couteauPti = ImageIO.read(new File("couteauPti.png"));
-            this.grenade = ImageIO.read(new File("bombe.png"));
+            this.couteauPtiHaut = ImageIO.read(new File("couteauPtiHaut.png"));
+            this.couteauPtiBas = ImageIO.read(new File("couteauPtiBas.png"));
+            this.couteauPtiGauche = ImageIO.read(new File("couteauPtiGauche.png"));
+            this.couteauPtiDroite = ImageIO.read(new File("couteauPtiDroite.png"));
+            this.grenade = ImageIO.read(new File("bombePti.png"));
+            this.bowPti = ImageIO.read(new File("bowPti.png"));
+            this.munition = ImageIO.read(new File("ammoPti.png"));
 
             this.Moi= moi;
         } catch (IOException ex) {
@@ -299,9 +304,21 @@ public class Jeu {
             int y = Proj.getY();
 
             if (Proj.getType()=="couteau" && Proj.getVitessex()>0){
-                contexte.drawImage(this.couteauPti, x, y, null);
+                contexte.drawImage(this.couteauPtiDroite, x, y, null);
+            }
+            if (Proj.getType()=="couteau" && Proj.getVitessex()<0){
+                contexte.drawImage(this.couteauPtiGauche, x, y, null);
+            }
+            if (Proj.getType()=="couteau" && Proj.getVitessey()>0){
+                contexte.drawImage(this.couteauPtiBas, x, y, null);
+            }
+            if (Proj.getType()=="couteau" && Proj.getVitessey()<0){
+                contexte.drawImage(this.couteauPtiHaut, x, y, null);
             }
             if (Proj.getType()=="grenade"){
+                contexte.drawImage(this.grenade, x, y, null);
+            }
+            if (Proj.getType()=="fleche"){
                 contexte.drawImage(this.grenade, x, y, null);
             }
         } 
@@ -311,13 +328,13 @@ public class Jeu {
             int y = bonus.getY();
 
             if (bonus.getType()=="BonusArc" ){
-                //contexte.drawImage(, x, y, null);
+                contexte.drawImage(this.bowPti, x, y, null);
             }
             if (bonus.getType()=="lancegrenade"){
-                //contexte.drawImage(, x, y, null);
+                contexte.drawImage(this.grenade, x, y, null);
             }
             if (bonus.getType()=="BonusMunitions"){
-                //contexte.drawImage(, x, y, null);
+                contexte.drawImage(this.munition, x, y, null);
             }
         }
     
