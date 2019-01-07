@@ -40,6 +40,7 @@ public class Main extends javax.swing.JFrame {
     public static int hauteurPersos=35;
     private Projectile Proj;
     public static Connection connexion;
+    public static int largeurbonus=30;
     
     /**
      * Creates new form Main
