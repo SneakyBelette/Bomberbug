@@ -228,8 +228,8 @@ public class Joueur {
     
      public void deplacerDroite(){
          
-        if (this.EstOccupee(this.x+5, this.y)==false && deplacerDroite == true){
-            this.x = this.x +3;
+        if (this.EstOccupee(this.x+3, this.y)==false && deplacerDroite == true){
+            this.x = this.x+3;
         }
         
         this.direction = 2;
@@ -237,8 +237,8 @@ public class Joueur {
      
     public void deplacerGauche(){
         
-        if (this.EstOccupee(this.x-5, this.y)==false && deplacerGauche == true){
-            this.x=this.x -3;       
+        if (this.EstOccupee(this.x-3, this.y)==false && deplacerGauche == true){
+            this.x=this.x-3;       
         }
         this.direction = 4;
 
@@ -246,7 +246,7 @@ public class Joueur {
     
     public void deplacerHaut(){
         
-        if (this.EstOccupee(this.x, this.y-5)==false && deplacerHaut == true){
+        if (this.EstOccupee(this.x, this.y-3)==false && deplacerHaut == true){
             this.y= this.y-3;
         }
         
@@ -255,7 +255,7 @@ public class Joueur {
     
     public void deplacerBas(){
         
-        if (this.EstOccupee(this.x, this.y+5)==false && deplacerBas == true){
+        if (this.EstOccupee(this.x, this.y+3)==false && deplacerBas == true){
             this.y= this.y+3;
         }
         this.direction = 1;
@@ -291,7 +291,7 @@ public class Joueur {
             estoccupee = true;
         }
         
-        if (Murs.estDansMur(x,y)){
+        if (Murs.estDansMur(x+largeurPersos/2,y+largeurPersos/2)){
             estoccupee = true;
             
         }
