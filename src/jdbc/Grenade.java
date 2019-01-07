@@ -31,25 +31,25 @@ public class Grenade extends Projectile{
         if(joueur.getDirection()==1){
             
             b = hauteurPersos/2;
-            this.vitessey=3;
+            this.vitessey=5;
            
             
         }else if(joueur.getDirection()==2){
             
             a = largeurPersos/2;
-            this.vitessex=3;
+            this.vitessex=5;
           
             
         }else if(joueur.getDirection()==3){
             
             b = -hauteurPersos/2;
-            this.vitessey=-3;
+            this.vitessey=-5;
             
             
         }else if(joueur.getDirection()==4){
             
             a = -largeurPersos/2;
-            this.vitessex=-3;
+            this.vitessex=-5;
             
             
         }

@@ -78,6 +78,7 @@ public class Couteau extends Projectile{
             System.out.println("degat couteau à " + joueur.getPseudo() +" PV = "+ joueur.getPv());
         }
         
+        
     }
     
     boolean Avancer(){
