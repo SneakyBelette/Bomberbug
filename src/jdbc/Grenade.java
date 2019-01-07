@@ -78,11 +78,14 @@ public class Grenade extends Projectile{
     
     void Exploser(){
         
+        this.hauteur=70;
+        this.largeur=70;
+        
         ArrayList<Joueur> JoueursEnRange = SontEnRange();
         
         for(Joueur joueur : JoueursEnRange){
             joueur.EnleverPv();
-            System.out.println("degat fleche à " + joueur.getPseudo() +" PV = "+ joueur.getPv());
+            System.out.println("degat bombe à " + joueur.getPseudo() +" PV = "+ joueur.getPv());
         }
         
     }
