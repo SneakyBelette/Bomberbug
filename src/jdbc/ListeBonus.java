@@ -75,8 +75,6 @@ public class ListeBonus {
                 while (resultat.next()) {
                 
                     //Bonus bonus = new Couteau(Moi);
-                
-                       
 
                     if (resultat.getString("type").equals("couteau")){
                         

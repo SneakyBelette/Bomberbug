@@ -69,6 +69,26 @@ public abstract class Bonus {
         }
     }
     
+    protected void Enlever(){
+        
+        try {
+
+            PreparedStatement requete = connexion.prepareStatement("DELETE FROM bonus WHERE type =? AND x=? AND y=? ");
+            requete.setString(1, this.getType().toString());
+            requete.setInt(2, this.getX());
+            requete.setInt(3, this.getY());
+
+            requete.executeUpdate();
+
+            requete.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+    
+    
     protected boolean TestChoc(Joueur joueur){
         boolean Choc = false;
         

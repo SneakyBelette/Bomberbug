@@ -36,8 +36,8 @@ public class Main extends javax.swing.JFrame {
     public static ListeProjectiles Projectiles = new ListeProjectiles();
     public static ListeProjectiles ProjectilesAAjouter = new ListeProjectiles();
     private Jeu jeu;
-    public static int largeurPersos=25;
-    public static int hauteurPersos=35;
+    public static int largeurPersos=20;
+    public static int hauteurPersos=30;
     private Projectile Proj;
     public static Connection connexion;
     public static int largeurbonus=30;
@@ -64,21 +64,21 @@ public class Main extends javax.swing.JFrame {
         public void run() {
             int i = 1;
             
+            
             while(i==1){
+                
                 
             //Début de la boucle infini
             
-                //>>> Moi.Agir(); (à créer par équipe Jeu)
+                
                 Moi.Deplacer();
                 Moi.Push();
                 Adversaires.charger();
                 
+               
                 Projectiles.UpdateProjectiles(Moi.getId());
                 
-                //if (Moi.getId ==2){
-                //    Bonus.Generer();
-                //    Bonus.Push();         (à créer par équipe SQL)
-                //}
+                
                 
                 jeu.Update(Moi);
                 jeu.Afficher(contexteBuffer);
@@ -104,7 +104,7 @@ public class Main extends javax.swing.JFrame {
             
             try {
             
-                Thread.sleep(10);
+                Thread.sleep(40);
             } catch (Exception e) {
             e.printStackTrace();
             }
@@ -143,7 +143,7 @@ public class Main extends javax.swing.JFrame {
         
         Murs.add(new Mur(0,0,975,25));
         Murs.add(new Mur(975,0,1000,666));
-        Murs.add(new Mur(0,641,975,641));
+        Murs.add(new Mur(0,636,975,666));
         Murs.add(new Mur(0,25,25,641));
         Murs.add(new Mur(87,77,139,127));
         Murs.add(new Mur(244,90,415,108));
@@ -154,11 +154,11 @@ public class Main extends javax.swing.JFrame {
         Murs.add(new Mur(179,155,199,205));
         Murs.add(new Mur(146,189,199,205));
         Murs.add(new Mur(146,189,166,238));
-        Murs.add(new Mur(0114,220,166,238));
+        Murs.add(new Mur(114,220,166,238));
         Murs.add(new Mur(114,220,134,289));
         Murs.add(new Mur(83,271,134,289));
         Murs.add(new Mur(83,271,102,339));
-        Murs.add(new Mur(142,370,195,389));
+        Murs.add(new Mur(164,370,195,389));
         Murs.add(new Mur(164,390,216,406));
         Murs.add(new Mur(83,465,206,484));
         Murs.add(new Mur(187,485,205,591));
@@ -168,7 +168,7 @@ public class Main extends javax.swing.JFrame {
         Murs.add(new Mur(433,539,689,557));
         Murs.add(new Mur(610,460,888,475));
         Murs.add(new Mur(764,539,887,556));
-        Murs.add(new Mur(887,640,870,539));
+        Murs.add(new Mur(870,539,887,640));
         Murs.add(new Mur(869,385,888,475));
         Murs.add(new Mur(869,237,888,320));
         Murs.add(new Mur(869,237,975,256));
@@ -185,7 +185,12 @@ public class Main extends javax.swing.JFrame {
         Murs.add(new Mur(778,153,904,180));
         Murs.add(new Mur(898,91,976,110));
        
-        
+        for(Mur mur : Murs.getListeMur()){
+            mur.setX1(mur.getX1()-10);
+            mur.setX2(mur.getX2()-10);
+            mur.setY1(mur.getY1()-5);
+            mur.setY2(mur.getY2()-5);
+        }
         
         
     }

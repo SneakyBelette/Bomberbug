@@ -186,7 +186,35 @@ public class ListeProjectiles {
         }
         
         
-        for(Projectile proj : this.Liste){
+        try {
+
+            
+            for(int i=0; i < this.Liste.size(); i++){
+                
+            
+                Projectile proj = this.Liste.get(i);
+            
+                PreparedStatement requete3 = connexion.prepareStatement("JOIN UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur ="+ID+"");
+                requete3.setInt(1, proj.getX());
+                requete3.setInt(2, proj.getY());
+                requete3.setLong(3, proj.getNaissance());
+                    
+                
+                requete3.execute();
+                requete3.close(); 
+            }
+            
+            
+
+        } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            
+        
+        
+        
+        
+       /* for(Projectile proj : this.Liste){
             try {
                 PreparedStatement requete3 = connexion.prepareStatement("UPDATE projectiles SET x = ?, y = ? WHERE timer = ? AND numero_lanceur ="+ID+"");
                 requete3.setInt(1, proj.getX());
@@ -201,7 +229,7 @@ public class ListeProjectiles {
                 ex.printStackTrace();
             }
             
-        }
+        }*/
         
         try {
                 PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles WHERE numero_lanceur <>"+ID+";");
@@ -215,6 +243,14 @@ public class ListeProjectiles {
                     if (resultat.getString("type").equals("couteau")){
                         
                         Proj = new Couteau(resultat.getInt("x"),resultat.getInt("y"),resultat.getInt("vitesse x"),resultat.getInt("vitesse y"),resultat.getInt("hauteur"),resultat.getInt("largeur"),resultat.getInt("numero_lanceur"),resultat.getLong("timer"));
+                    }
+                    if (resultat.getString("type").equals("fleche")){
+                        
+                        Proj = new Fleche(resultat.getInt("x"),resultat.getInt("y"),resultat.getInt("vitesse x"),resultat.getInt("vitesse y"),resultat.getInt("hauteur"),resultat.getInt("largeur"),resultat.getInt("numero_lanceur"),resultat.getLong("timer"));
+                    }
+                    if (resultat.getString("type").equals("grenade")){
+                        
+                        Proj = new Grenade(resultat.getInt("x"),resultat.getInt("y"),resultat.getInt("vitesse x"),resultat.getInt("vitesse y"),resultat.getInt("hauteur"),resultat.getInt("largeur"),resultat.getInt("numero_lanceur"),resultat.getLong("timer"));
                     }
                     
                     
