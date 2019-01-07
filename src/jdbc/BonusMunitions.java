@@ -11,23 +11,25 @@ import static jdbc.Main.Moi;
  *
  * @author pdolle
  */
-public class Arc extends Bonus{
+public class BonusMunitions extends Bonus{
     
-     public Arc(int x, int y) {
+    
+     public BonusMunitions(int x, int y) {
         
-        super("BonusArc",x,y);
+        super("BonusMunitions",x,y);
         
      }
     
     void Utiliser() {
-        System.out.println("utiliser called!");
-        Moi.setArme("fleche");
-        Moi.setMunition(5);
+        
+        Moi.setMunition(Moi.getMunition()+5);
         this.Enlever();
+        
     }
     
     
     void Afficher() {
         
     }
+
 }

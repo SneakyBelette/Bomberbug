@@ -40,7 +40,7 @@ public class Main extends javax.swing.JFrame {
     public static int hauteurPersos=30;
     private Projectile Proj;
     public static Connection connexion;
-    public static int largeurbonus=30;
+    public static ListeBonus ListeDesBonus = new ListeBonus();
     
     /**
      * Creates new form Main
@@ -78,7 +78,8 @@ public class Main extends javax.swing.JFrame {
                
                 Projectiles.UpdateProjectiles(Moi.getId());
                 
-                
+                ListeDesBonus.ResoudreBonus(Moi);
+                ListeDesBonus.UpdateBonus();
                 
                 jeu.Update(Moi);
                 jeu.Afficher(contexteBuffer);

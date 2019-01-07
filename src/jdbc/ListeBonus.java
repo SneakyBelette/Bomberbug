@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import static jdbc.Main.Moi;
+import static jdbc.Main.Murs;
 import static jdbc.Main.ProjectilesAAjouter;
 import static jdbc.Main.connexion;
 
@@ -62,7 +63,28 @@ public class ListeBonus {
         
         
     }
+    
+    public void ResoudreBonus(Joueur joueur){
+        for (Bonus bonus : this.Liste){
+            if (bonus.TestChoc(joueur)){
+                bonus.Utiliser();
+            }
+        }
+    }
         
+    public void NettoyerBonus(){
+         try {
+
+           
+            PreparedStatement requete = connexion.prepareStatement("DELETE FROM bonus ");
+            requete.executeUpdate();
+
+            requete.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
         
     public void UpdateBonus(){
         
@@ -70,22 +92,28 @@ public class ListeBonus {
         ArrayList<Bonus> Liste2 = new ArrayList<Bonus>();
 
         try {
-                PreparedStatement requete = connexion.prepareStatement("SELECT * FROM projectiles;");
+                PreparedStatement requete = connexion.prepareStatement("SELECT * FROM bonus;");
                 ResultSet resultat = requete.executeQuery();
                 while (resultat.next()) {
                 
-                    //Bonus bonus = new Couteau(Moi);
+                    Bonus bonus = new Arc(0,0);
 
-                    if (resultat.getString("type").equals("couteau")){
+                    if (resultat.getString("type").equals("BonusArc")){
+                        bonus = new Arc(resultat.getInt("x"),resultat.getInt("y"));
+                    }
+                    if (resultat.getString("type").equals("BonusGrenade")){
+                        bonus = new BonusGrenade(resultat.getInt("x"),resultat.getInt("y"));
                         
-                        //bonus = new Couteau(resultat.getInt("x"),resultat.getInt("y"),resultat.getInt("vitesse x"),resultat.getInt("vitesse y"),resultat.getInt("hauteur"),resultat.getInt("largeur"),resultat.getInt("numero_lanceur"),resultat.getLong("timer"));
+                    }if (resultat.getString("type").equals("BonusMunitions")){
+                        bonus = new BonusGrenade(resultat.getInt("x"),resultat.getInt("y"));
                     }
                     
                     
-                    //Liste2.add(bonus);
+                    
+                    Liste2.add(bonus);
                     
 
-                     
+                    
                     
                 }
                 requete.close();  
@@ -94,6 +122,36 @@ public class ListeBonus {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+        
+        int i =(int)(Math.random() * (60*1000/40));
+                    
+                    if (i == 1){
+                        int x = (int)(Math.random() * (1200));
+                        int y = (int)(Math.random() * (800));
+                        
+                        if (Murs.estDansMur(x, y)==false){
+                            Bonus Nouveaubonus = new BonusGrenade(x,y);
+                            Nouveaubonus.Ajouter();
+                        }
+                    }
+                    if (i == 2){
+                        int x = (int)(Math.random() * (1200));
+                        int y = (int)(Math.random() * (800));
+                        
+                        if (Murs.estDansMur(x, y)==false){
+                            Bonus Nouveaubonus = new Arc(x,y);
+                            Nouveaubonus.Ajouter();
+                        }
+                    }
+                    if (i >10 && i < 30 ){
+                        int x = (int)(Math.random() * (1200));
+                        int y = (int)(Math.random() * (800));
+                        
+                        if (Murs.estDansMur(x, y)==false){
+                            Bonus Nouveaubonus = new BonusMunitions(x,y);
+                            Nouveaubonus.Ajouter();
+                        }
+                    }
         
         this.setListe(Liste2);
         

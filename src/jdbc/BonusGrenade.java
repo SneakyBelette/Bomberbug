@@ -11,17 +11,17 @@ import static jdbc.Main.Moi;
  *
  * @author pdolle
  */
-public class Arc extends Bonus{
+public class BonusGrenade extends Bonus {
     
-     public Arc(int x, int y) {
+     public BonusGrenade(int x, int y) {
         
-        super("BonusArc",x,y);
+        super("lancegrenade",x,y);
         
      }
     
     void Utiliser() {
         System.out.println("utiliser called!");
-        Moi.setArme("fleche");
+        Moi.setArme("grenade");
         Moi.setMunition(5);
         this.Enlever();
     }
@@ -31,3 +31,5 @@ public class Arc extends Bonus{
         
     }
 }
+
+
