@@ -317,6 +317,7 @@ public class Jeu {
             }
             if (Proj.getType()=="grenade"){
                 contexte.drawImage(this.grenade, x, y, null);
+                
             }
             if (Proj.getType()=="fleche"){
                 contexte.drawImage(this.grenade, x, y, null);
