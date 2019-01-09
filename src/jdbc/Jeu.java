@@ -27,7 +27,7 @@ import static jdbc.Main.Projectiles;
  */
 public class Jeu {
 
-    private BufferedImage nyancat,map,bowPti,munition,  fond, spritegauche1, spritegauche2, spritegauche3,
+    private BufferedImage nyancat,map,bowPti,munition,arrowPti,arrowPtiBas,arrowPtiGauche,arrowPtiDroite,  fond, spritegauche1, spritegauche2, spritegauche3,
             spritegauche4, spritegauche5, spritegauche6, spritegauche7, spritegauche8,
             spritegauche9, spritegauche10, spritedroite1, spritedroite2, spritedroite3,
             spritedroite4, spritedroite5, spritedroite6, spritedroite7, spritedroite8,
@@ -231,6 +231,10 @@ public class Jeu {
             this.grenade = ImageIO.read(new File("bombePti.png"));
             this.bowPti = ImageIO.read(new File("bowPti.png"));
             this.munition = ImageIO.read(new File("ammoPti.png"));
+            this.arrowPti = ImageIO.read(new File("arrowPti.png"));
+            this.arrowPtiBas = ImageIO.read(new File("arrowPtiBas.png"));
+            this.arrowPtiGauche = ImageIO.read(new File("arrowPtiGauche.png"));
+            this.arrowPtiDroite = ImageIO.read(new File("arrowPtiDroite.png"));
 
             this.Moi= moi;
         } catch (IOException ex) {
@@ -317,10 +321,18 @@ public class Jeu {
             }
             if (Proj.getType()=="grenade"){
                 contexte.drawImage(this.grenade, x, y, null);
-                
             }
-            if (Proj.getType()=="fleche"){
-                contexte.drawImage(this.grenade, x, y, null);
+            if (Proj.getType()=="fleche" && Proj.getVitessex()>0){
+                contexte.drawImage(this.arrowPtiDroite, x, y, null);
+            }
+            if (Proj.getType()=="fleche" && Proj.getVitessex()<0){
+                contexte.drawImage(this.arrowPtiGauche, x, y, null);
+            }
+            if (Proj.getType()=="fleche" && Proj.getVitessey()>0){
+                contexte.drawImage(this.arrowPtiBas, x, y, null);
+            }
+            if (Proj.getType()=="fleche" && Proj.getVitessey()<0){
+                contexte.drawImage(this.arrowPti, x, y, null);
             }
         } 
         
