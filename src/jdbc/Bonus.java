@@ -73,7 +73,8 @@ public abstract class Bonus {
         try {
 
             PreparedStatement requete = connexion.prepareStatement("DELETE FROM bonus WHERE type =? AND x=? AND y=? ");
-            requete.setString(1, this.getType().toString());
+            System.out.println(this.getType()+" x="+this.getX()+" y= "+this.getY());
+            requete.setString(1, this.getType());
             requete.setInt(2, this.getX());
             requete.setInt(3, this.getY());
 

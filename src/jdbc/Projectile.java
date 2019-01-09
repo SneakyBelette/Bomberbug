@@ -162,10 +162,10 @@ public abstract class Projectile {
         for(Joueur joueur : listeJoueur){
             
         
-            int x1=joueur.getX();
-            int y1=joueur.getY();
-            int x2=joueur.getX()+largeurPersos;
-            int y2=joueur.getY()+hauteurPersos;
+            int x1=joueur.getX()-largeurPersos/2;
+            int y1=joueur.getY()-hauteurPersos/2;
+            int x2=joueur.getX()+largeurPersos/2;
+            int y2=joueur.getY()+hauteurPersos/2;
             
 
             if ((this.x)>x1 & (this.x)<x2 & (this.y)>y1 & (this.y)<y2){

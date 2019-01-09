@@ -307,12 +307,12 @@ public class Joueur {
                 Projectile proj = new Couteau(Moi);
                 Liste.add(proj);
             }
-            if (this.arme.equals("fleche") || this.munition>0){
+            if (this.arme.equals("fleche") && this.munition>0){
                 Projectile proj = new Fleche(Moi);
                 Liste.add(proj);
                 this.munition = this.munition -1;
             }
-            if (this.arme.equals("grenade") || this.munition>0){
+            if (this.arme.equals("grenade") && this.munition>0){
                 Projectile proj = new Grenade(Moi);
                 Liste.add(proj);
                 this.munition = this.munition -1;

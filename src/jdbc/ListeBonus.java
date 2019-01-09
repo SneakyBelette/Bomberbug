@@ -101,11 +101,11 @@ public class ListeBonus {
                     if (resultat.getString("type").equals("BonusArc")){
                         bonus = new Arc(resultat.getInt("x"),resultat.getInt("y"));
                     }
-                    if (resultat.getString("type").equals("BonusGrenade")){
+                    if (resultat.getString("type").equals("lancegrenade")){
                         bonus = new BonusGrenade(resultat.getInt("x"),resultat.getInt("y"));
                         
                     }if (resultat.getString("type").equals("BonusMunitions")){
-                        bonus = new BonusGrenade(resultat.getInt("x"),resultat.getInt("y"));
+                        bonus = new BonusMunitions(resultat.getInt("x"),resultat.getInt("y"));
                     }
                     
                     

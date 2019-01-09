@@ -21,7 +21,7 @@ public class Couteau extends Projectile{
     public Couteau(Joueur joueur) {
         
 
-        super("couteau",joueur.getX(),joueur.getY(),0,0,20,20,joueur.getId(),System.currentTimeMillis());
+        super("couteau",joueur.getX(),joueur.getY(),0,0,0,0,joueur.getId(),System.currentTimeMillis());
         
         int a = 0;
         int b = 0;
@@ -30,21 +30,30 @@ public class Couteau extends Projectile{
             
             b = hauteurPersos/2;
             this.vitessey=15;
+            this.hauteur=20;
+            this.largeur=5;
             
         }else if(joueur.getDirection()==2){
             
             a = largeurPersos/2;
             this.vitessex=15;
+            this.hauteur=5;
+            this.largeur=20;
             
         }else if(joueur.getDirection()==3){
             
             b = -hauteurPersos/2;
             this.vitessey=-15;
+            this.hauteur=20;
+            this.largeur=5;
             
         }else if(joueur.getDirection()==4){
             
             a = -largeurPersos/2;
             this.vitessex=-15;
+            this.hauteur=5;
+            this.largeur=20;
+            
             
         }
         this.x = joueur.getX()+a;
