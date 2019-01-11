@@ -23,6 +23,7 @@ public class Arc extends Bonus{
         System.out.println("utiliser called!");
         Moi.setArme("fleche");
         Moi.setMunition(5);
+        Moi.settempsattaque(1000);
         this.Enlever();
     }
     

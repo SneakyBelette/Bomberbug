@@ -23,6 +23,7 @@ public class BonusGrenade extends Bonus {
         System.out.println("utiliser called!");
         Moi.setArme("grenade");
         Moi.setMunition(5);
+        Moi.settempsattaque(1000);
         this.Enlever();
     }
     

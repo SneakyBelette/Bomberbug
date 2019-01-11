@@ -125,7 +125,7 @@ public class ListeBonus {
         
         int i =(int)(Math.random() * (60*1000/40));
                     
-                    if (i == 1){
+                    if (i < 4){
                         int x = (int)(Math.random() * (1200));
                         int y = (int)(Math.random() * (800));
                         
@@ -134,20 +134,20 @@ public class ListeBonus {
                             Nouveaubonus.Ajouter();
                         }
                     }
-                    if (i == 2){
+                    if (i >3 && i <8){
                         int x = (int)(Math.random() * (1200));
                         int y = (int)(Math.random() * (800));
                         
-                        if (Murs.estDansMur(x, y)==false){
+                        if (Murs.estDansMur(x, y)==false && Murs.estDansMur(x+20, y+20)==false && Murs.estDansMur(x+20, y)==false && Murs.estDansMur(x, y+20)==false){
                             Bonus Nouveaubonus = new Arc(x,y);
                             Nouveaubonus.Ajouter();
                         }
                     }
-                    if (i >10 && i < 30 ){
+                    if (i >10 && i < 24 ){
                         int x = (int)(Math.random() * (1200));
                         int y = (int)(Math.random() * (800));
                         
-                        if (Murs.estDansMur(x, y)==false){
+                        if (Murs.estDansMur(x, y)==false && Murs.estDansMur(x+20, y+20)==false && Murs.estDansMur(x+20, y)==false && Murs.estDansMur(x, y+20)==false){
                             Bonus Nouveaubonus = new BonusMunitions(x,y);
                             Nouveaubonus.Ajouter();
                         }

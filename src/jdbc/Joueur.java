@@ -121,6 +121,10 @@ public class Joueur {
         this.jeRamasse = jeRamasse;
     }
     
+    public void settempsattaque(long truc){
+        this.tempsEntreAttaque = truc;
+    }
+    
     
     
     /* getters */
@@ -303,19 +307,18 @@ public class Joueur {
         ArrayList<Projectile> Liste = new ArrayList<>();
         if(temps - this.derniereAttaque > this.tempsEntreAttaque){
             this.derniereAttaque = System.currentTimeMillis();
-            if (this.getArme().equals("couteau")){
-                Projectile proj = new Couteau(Moi);
-                Liste.add(proj);
-            }
+            
             if (this.arme.equals("fleche") && this.munition>0){
                 Projectile proj = new Fleche(Moi);
                 Liste.add(proj);
                 this.munition = this.munition -1;
-            }
-            if (this.arme.equals("grenade") && this.munition>0){
+            }else if (this.arme.equals("grenade") && this.munition>0){
                 Projectile proj = new Grenade(Moi);
                 Liste.add(proj);
                 this.munition = this.munition -1;
+            }else{
+                Projectile proj = new Couteau(Moi);
+                Liste.add(proj);
             }
         }
         return Liste;
@@ -355,6 +358,30 @@ public class Joueur {
     
     public void Push(){
         
+        
+        try {
+
+
+            PreparedStatement requete = connexion.prepareStatement("SELECT pv FROM joueur WHERE id = ?");
+            requete.setInt(1,this.id );
+            
+
+
+            //System.out.println(requete);
+            ResultSet resultat = requete.executeQuery();
+
+            
+            if(resultat.next()){
+                this.setPv(resultat.getInt("pv"));
+            }
+
+            requete.close();
+            
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
         if (Moi.getPv()<1){
             Moi.setPseudo("MORT");
             Moi.setX(-200);
@@ -364,16 +391,15 @@ public class Joueur {
         try {
 
 
-            PreparedStatement requete = connexion.prepareStatement("UPDATE joueur SET pseudo = ?, x = ?, y = ?, pv = ?, arme = ?, etat = ?, direction = ?, munitions = ? WHERE id = ?");
+            PreparedStatement requete = connexion.prepareStatement("UPDATE joueur SET pseudo = ?, x = ?, y = ?, arme = ?, etat = ?, direction = ?, munitions = ? WHERE id = ?");
             requete.setString(1,this.pseudo );
             requete.setInt(2,this.x );
             requete.setInt(3,this.y );
-            requete.setInt(4,this.pv );
-            requete.setString(5,this.arme );
-            requete.setInt(6,this.etat );
-            requete.setInt(7,this.direction );
-            requete.setInt(8,this.munition );
-            requete.setInt(9,this.id);
+            requete.setString(4,this.arme );
+            requete.setInt(5,this.etat );
+            requete.setInt(6,this.direction );
+            requete.setInt(7,this.munition );
+            requete.setInt(8,this.id);
 
             //System.out.println(requete);
             requete.executeUpdate();
