@@ -129,7 +129,7 @@ public class ListeBonus {
                         int x = (int)(Math.random() * (1200));
                         int y = (int)(Math.random() * (800));
                         
-                        if (Murs.estDansMur(x, y)==false){
+                        if (Murs.estDansMur(x, y)==false && Murs.estDansMur(x+20, y+20)==false && Murs.estDansMur(x+20, y)==false && Murs.estDansMur(x, y+20)==false){
                             Bonus Nouveaubonus = new BonusGrenade(x,y);
                             Nouveaubonus.Ajouter();
                         }
