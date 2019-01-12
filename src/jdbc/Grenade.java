@@ -85,8 +85,10 @@ public class Grenade extends Projectile{
         
         for(Joueur joueur : JoueursEnRange){
             joueur.EnleverPv();
+            
             System.out.println("degat bombe à " + joueur.getPseudo() +" PV = "+ joueur.getPv());
         }
+        PlaySound ihm = new PlaySound("bombeexplo.wav");
         
     }
     

@@ -140,7 +140,7 @@ public class Main extends javax.swing.JFrame {
         this.contexteBuffer = this.buffer.createGraphics();
         
         
-        tache.start(); // lancement de la boucle infinie
+         // lancement de la boucle infinie
         
         Murs.add(new Mur(0,0,975,25));
         Murs.add(new Mur(975,0,1000,666));
@@ -192,6 +192,11 @@ public class Main extends javax.swing.JFrame {
             mur.setY1(mur.getY1()-5);
             mur.setY2(mur.getY2()-5);
         }
+        
+        PlaySound fond = new PlaySound("truc.wav");
+
+        
+        tache.start();
         
         
     }

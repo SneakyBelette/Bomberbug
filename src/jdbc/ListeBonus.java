@@ -68,6 +68,7 @@ public class ListeBonus {
         for (Bonus bonus : this.Liste){
             if (bonus.TestChoc(joueur)){
                 bonus.Utiliser();
+                PlaySound ihm = new PlaySound("ramasser.wav");
             }
         }
     }

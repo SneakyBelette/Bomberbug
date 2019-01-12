@@ -311,13 +311,16 @@ public class Joueur {
             if (this.arme.equals("fleche") && this.munition>0){
                 Projectile proj = new Fleche(Moi);
                 Liste.add(proj);
+                PlaySound ihm = new PlaySound("fleche.wav");
                 this.munition = this.munition -1;
             }else if (this.arme.equals("grenade") && this.munition>0){
                 Projectile proj = new Grenade(Moi);
                 Liste.add(proj);
+                PlaySound ihm = new PlaySound("grenage.wav");
                 this.munition = this.munition -1;
             }else{
                 Projectile proj = new Couteau(Moi);
+                PlaySound ihm = new PlaySound("couteau.wav");
                 Liste.add(proj);
             }
         }
@@ -352,6 +355,7 @@ public class Joueur {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        PlaySound ihm = new PlaySound("quelquuntouche.wav");
         
     }
     
@@ -386,6 +390,7 @@ public class Joueur {
             Moi.setPseudo("MORT");
             Moi.setX(-200);
             Moi.setArme("aucune");
+            PlaySound ihm = new PlaySound("quelquunestmort.wav");
         }
         
         try {
