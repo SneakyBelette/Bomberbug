@@ -307,31 +307,31 @@ public class Jeu {
             int x = Proj.getX();
             int y = Proj.getY();
 
-            if (Proj.getType()=="couteau" && Proj.getVitessex()>0){
+            if (Proj.getType().equals("couteau") && Proj.getVitessex()>0){
                 contexte.drawImage(this.couteauPtiDroite, x, y, null);
             }
-            if (Proj.getType()=="couteau" && Proj.getVitessex()<0){
+            if (Proj.getType().equals("couteau" )&& Proj.getVitessex()<0){
                 contexte.drawImage(this.couteauPtiGauche, x, y, null);
             }
-            if (Proj.getType()=="couteau" && Proj.getVitessey()>0){
+            if (Proj.getType().equals("couteau") && Proj.getVitessey()>0){
                 contexte.drawImage(this.couteauPtiBas, x, y, null);
             }
-            if (Proj.getType()=="couteau" && Proj.getVitessey()<0){
+            if (Proj.getType().equals("couteau") && Proj.getVitessey()<0){
                 contexte.drawImage(this.couteauPtiHaut, x, y, null);
             }
-            if (Proj.getType()=="grenade"){
+            if (Proj.getType().equals("grenade")){
                 contexte.drawImage(this.grenade, x, y, null);
             }
-            if (Proj.getType()=="fleche" && Proj.getVitessex()>0){
+            if (Proj.getType().equals("fleche") && Proj.getVitessex()>0){
                 contexte.drawImage(this.arrowPtiDroite, x, y, null);
             }
-            if (Proj.getType()=="fleche" && Proj.getVitessex()<0){
+            if (Proj.getType().equals("fleche") && Proj.getVitessex()<0){
                 contexte.drawImage(this.arrowPtiGauche, x, y, null);
             }
-            if (Proj.getType()=="fleche" && Proj.getVitessey()>0){
+            if (Proj.getType().equals("fleche") && Proj.getVitessey()>0){
                 contexte.drawImage(this.arrowPtiBas, x, y, null);
             }
-            if (Proj.getType()=="fleche" && Proj.getVitessey()<0){
+            if (Proj.getType().equals("fleche") && Proj.getVitessey()<0){
                 contexte.drawImage(this.arrowPti, x, y, null);
             }
         } 
@@ -340,13 +340,13 @@ public class Jeu {
             int x = bonus.getX();
             int y = bonus.getY();
 
-            if (bonus.getType()=="BonusArc" ){
+            if (bonus.getType().equals("BonusArc") ){
                 contexte.drawImage(this.bowPti, x, y, null);
             }
-            if (bonus.getType()=="lancegrenade"){
+            if (bonus.getType().equals("lancegrenade")){
                 contexte.drawImage(this.grenade, x, y, null);
             }
-            if (bonus.getType()=="BonusMunitions"){
+            if (bonus.getType().equals("BonusMunitions")){
                 contexte.drawImage(this.munition, x, y, null);
             }
         }
