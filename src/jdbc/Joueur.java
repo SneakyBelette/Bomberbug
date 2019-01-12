@@ -390,7 +390,7 @@ public class Joueur {
             Moi.setPseudo("MORT");
             Moi.setX(-200);
             Moi.setArme("aucune");
-            PlaySound ihm = new PlaySound("quelquunestmort.wav");
+            //PlaySound ihm = new PlaySound("quelquunestmort.wav");
         }
         
         try {

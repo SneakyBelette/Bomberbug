@@ -78,8 +78,8 @@ public class Grenade extends Projectile{
     
     void Exploser(){
         
-        this.hauteur=70;
-        this.largeur=70;
+        this.hauteur=120;
+        this.largeur=120;
         
         ArrayList<Joueur> JoueursEnRange = SontEnRange();
         
