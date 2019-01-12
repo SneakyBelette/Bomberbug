@@ -232,8 +232,8 @@ public class Joueur {
     
      public void deplacerDroite(){
          
-        if (this.EstOccupee(this.x+8, this.y)==false && deplacerDroite == true){
-            this.x = this.x+8;
+        if (this.EstOccupee(this.x+10, this.y)==false && deplacerDroite == true){
+            this.x = this.x+10;
         }
         
         this.direction = 2;
@@ -241,8 +241,8 @@ public class Joueur {
      
     public void deplacerGauche(){
         
-        if (this.EstOccupee(this.x-8, this.y)==false && deplacerGauche == true){
-            this.x=this.x-8;       
+        if (this.EstOccupee(this.x-10, this.y)==false && deplacerGauche == true){
+            this.x=this.x-10;       
         }
         this.direction = 4;
 
@@ -250,8 +250,8 @@ public class Joueur {
     
     public void deplacerHaut(){
         
-        if (this.EstOccupee(this.x, this.y-8)==false && deplacerHaut == true){
-            this.y= this.y-8;
+        if (this.EstOccupee(this.x, this.y-10)==false && deplacerHaut == true){
+            this.y= this.y-10;
         }
         
         this.direction = 3;
@@ -259,8 +259,8 @@ public class Joueur {
     
     public void deplacerBas(){
         
-        if (this.EstOccupee(this.x, this.y+8)==false && deplacerBas == true){
-            this.y= this.y+8;
+        if (this.EstOccupee(this.x, this.y+10)==false && deplacerBas == true){
+            this.y= this.y+10;
         }
         this.direction = 1;
         

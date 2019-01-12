@@ -30,28 +30,28 @@ public class Fleche extends Projectile{
         if(joueur.getDirection()==1){
             
             b = hauteurPersos/2;
-            this.vitessey=20;
+            this.vitessey=25;
             this.largeur = 5;
             this.hauteur = 20;
             
         }else if(joueur.getDirection()==2){
             
             a = largeurPersos/2;
-            this.vitessex=20;
+            this.vitessex=25;
             this.largeur = 20;
             this.hauteur = 5;
             
         }else if(joueur.getDirection()==3){
             
             b = -hauteurPersos/2;
-            this.vitessey=-20;
+            this.vitessey=-25;
             this.largeur = 5;
             this.hauteur = 20;
             
         }else if(joueur.getDirection()==4){
             
             a = -largeurPersos/2;
-            this.vitessex=-20;
+            this.vitessex=-25;
             this.largeur = 20;
             this.hauteur = 5;
             

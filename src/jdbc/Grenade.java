@@ -31,25 +31,25 @@ public class Grenade extends Projectile{
         if(joueur.getDirection()==1){
             
             b = hauteurPersos/2;
-            this.vitessey=5;
+            this.vitessey=8;
            
             
         }else if(joueur.getDirection()==2){
             
             a = largeurPersos/2;
-            this.vitessex=5;
+            this.vitessex=8;
           
             
         }else if(joueur.getDirection()==3){
             
             b = -hauteurPersos/2;
-            this.vitessey=-5;
+            this.vitessey=-8;
             
             
         }else if(joueur.getDirection()==4){
             
             a = -largeurPersos/2;
-            this.vitessex=-5;
+            this.vitessex=-8;
             
             
         }
@@ -68,7 +68,7 @@ public class Grenade extends Projectile{
         boolean EstPerime =false;
         
 
-        if (System.currentTimeMillis()-1500 > this.getNaissance()){
+        if (System.currentTimeMillis()-1200 > this.getNaissance()){
             EstPerime = true;
         }
 
